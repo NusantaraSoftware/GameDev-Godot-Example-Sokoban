@@ -1,0 +1,164 @@
+[gd_scene format=4 uid="uid://cqi1pw60k1u3a"]
+
+[ext_resource type="Script" uid="uid://b2d07y4mpocsi" path="res://gameplay.gd" id="1_ej4tk"]
+[ext_resource type="PackedScene" uid="uid://b6vfn63n64iid" path="res://player.tscn" id="1_n4psk"]
+[ext_resource type="Script" uid="uid://b807ojyndom2k" path="res://level.gd" id="2_xuee5"]
+[ext_resource type="Texture2D" uid="uid://c27ffkffmoir7" path="res://sokoban_tilesheet@2.png" id="3_oe8ih"]
+[ext_resource type="PackedScene" uid="uid://cftwbhv6jeqbr" path="res://box.tscn" id="4_smepj"]
+[ext_resource type="PackedScene" uid="uid://dw4jktqg3w8ks" path="res://scene_transition_rect.tscn" id="6_cbffv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oe8ih"]
+texture = ExtResource("3_oe8ih")
+texture_region_size = Vector2i(128, 128)
+7:7/0 = 0
+11:6/0 = 0
+4:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_qctir"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_oe8ih")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xuee5"]
+texture = ExtResource("3_oe8ih")
+texture_region_size = Vector2i(128, 128)
+12:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_p8hsn"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_xuee5")
+
+[sub_resource type="SystemFont" id="SystemFont_jdrdb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cbffv"]
+font = SubResource("SystemFont_jdrdb")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_qctir"]
+font = SubResource("SystemFont_jdrdb")
+font_size = 36
+font_color = Color(1, 1, 0, 1)
+
+[node name="Gameplay" type="Node2D" unique_id=172353815]
+script = ExtResource("1_ej4tk")
+levelNumber = 1
+
+[node name="Levels" type="Node2D" parent="." unique_id=487484425]
+
+[node name="01" type="Node2D" parent="Levels" unique_id=777719836]
+script = ExtResource("2_xuee5")
+playerStartCoord = Vector2i(2, 2)
+
+[node name="Board" type="TileMapLayer" parent="Levels/01" unique_id=1080083246]
+tile_map_data = PackedByteArray("AAAHAAMAAAAHAAcAAAABAAMAAAAHAAcAAAABAAEAAAAHAAcAAAACAAEAAAAHAAcAAAABAAIAAAAHAAcAAAACAAIAAAALAAYAAAADAAEAAAAHAAcAAAADAAIAAAALAAYAAAAFAAIAAAALAAYAAAAFAAEAAAAHAAcAAAAEAAEAAAAHAAcAAAAEAAIAAAALAAYAAAAGAAEAAAAHAAcAAAAGAAIAAAALAAYAAAAHAAIAAAAHAAcAAAAHAAEAAAAHAAcAAAABAAQAAAAHAAcAAAACAAQAAAAHAAcAAAADAAQAAAAHAAcAAAAEAAQAAAAHAAcAAAAFAAQAAAAHAAcAAAAGAAQAAAAHAAcAAAAHAAQAAAAHAAcAAAACAAMAAAALAAYAAAADAAMAAAALAAYAAAAEAAMAAAALAAYAAAAFAAMAAAALAAYAAAAGAAMAAAALAAYAAAA=")
+tile_set = SubResource("TileSet_qctir")
+
+[node name="Goals" type="TileMapLayer" parent="Levels/01" unique_id=1541595148]
+tile_map_data = PackedByteArray("AAAGAAMAAAAMAAMAAAA=")
+tile_set = SubResource("TileSet_p8hsn")
+
+[node name="Boxes" type="Node2D" parent="Levels/01" unique_id=293720222]
+
+[node name="Sprite2D4" parent="Levels/01/Boxes" unique_id=1889404437 instance=ExtResource("4_smepj")]
+position = Vector2(384, 384)
+coord = Vector2i(3, 3)
+
+[node name="02" type="Node2D" parent="Levels" unique_id=573675318]
+visible = false
+script = ExtResource("2_xuee5")
+playerStartCoord = Vector2i(1, 3)
+
+[node name="Board" type="TileMapLayer" parent="Levels/02" unique_id=1167027402]
+tile_map_data = PackedByteArray("AAAIAAEAAAAHAAcAAAAIAAIAAAAHAAcAAAAIAAMAAAAHAAcAAAAGAAQAAAALAAYAAAAGAAUAAAAHAAcAAAAFAAUAAAAHAAcAAAAEAAUAAAAHAAcAAAADAAUAAAAHAAcAAAACAAUAAAAHAAcAAAAAAAMAAAAHAAcAAAAAAAEAAAAHAAcAAAAAAAIAAAAHAAcAAAABAAEAAAAHAAcAAAACAAEAAAAHAAcAAAABAAIAAAALAAYAAAACAAIAAAALAAYAAAADAAEAAAAHAAcAAAADAAIAAAALAAYAAAADAAMAAAALAAYAAAAEAAQAAAALAAYAAAAFAAQAAAALAAYAAAAFAAMAAAALAAYAAAAFAAIAAAALAAYAAAAFAAEAAAAHAAcAAAAEAAEAAAAHAAcAAAAEAAIAAAAHAAcAAAAEAAMAAAALAAYAAAAGAAEAAAAHAAcAAAAGAAIAAAALAAYAAAAHAAIAAAALAAYAAAAHAAEAAAAHAAcAAAAAAAQAAAAHAAcAAAACAAQAAAAHAAcAAAADAAQAAAALAAYAAAAIAAQAAAAHAAcAAAAHAAQAAAALAAYAAAAHAAMAAAALAAYAAAAGAAMAAAALAAYAAAACAAMAAAALAAYAAAABAAMAAAALAAYAAAAAAAUAAAAHAAcAAAABAAUAAAAHAAcAAAAHAAUAAAAHAAcAAAAIAAUAAAAHAAcAAAABAAQAAAALAAYAAAA=")
+tile_set = SubResource("TileSet_qctir")
+
+[node name="Goals" type="TileMapLayer" parent="Levels/02" unique_id=1814260896]
+tile_map_data = PackedByteArray("AAAHAAIAAAAMAAMAAAAHAAMAAAAMAAMAAAAHAAQAAAAMAAMAAAA=")
+tile_set = SubResource("TileSet_p8hsn")
+
+[node name="Boxes" type="Node2D" parent="Levels/02" unique_id=1835022545]
+
+[node name="Sprite2D4" parent="Levels/02/Boxes" unique_id=1459225194 instance=ExtResource("4_smepj")]
+position = Vector2(768, 384)
+coord = Vector2i(6, 3)
+
+[node name="Sprite2D2" parent="Levels/02/Boxes" unique_id=1457644317 instance=ExtResource("4_smepj")]
+position = Vector2(512, 384)
+coord = Vector2i(4, 3)
+
+[node name="Sprite2D3" parent="Levels/02/Boxes" unique_id=280892519 instance=ExtResource("4_smepj")]
+position = Vector2(256, 384)
+coord = Vector2i(2, 3)
+
+[node name="03" type="Node2D" parent="Levels" unique_id=40087165]
+visible = false
+script = ExtResource("2_xuee5")
+playerStartCoord = Vector2i(4, 4)
+
+[node name="Board" type="TileMapLayer" parent="Levels/03" unique_id=1584295633]
+tile_map_data = PackedByteArray("AAAAAAAAAAAHAAcAAAABAAAAAAAHAAcAAAACAAAAAAAHAAcAAAADAAAAAAAHAAcAAAAEAAAAAAAHAAcAAAAFAAAAAAAHAAcAAAAGAAAAAAAHAAcAAAAHAAAAAAAHAAcAAAAIAAAAAAAHAAcAAAAIAAEAAAAHAAcAAAAIAAIAAAAHAAcAAAAIAAMAAAAHAAcAAAAHAAMAAAAHAAcAAAAGAAMAAAAHAAcAAAAGAAQAAAAHAAcAAAAGAAUAAAAHAAcAAAAFAAUAAAAHAAcAAAAEAAUAAAAHAAcAAAADAAUAAAAHAAcAAAACAAUAAAAHAAcAAAACAAQAAAAHAAcAAAACAAMAAAAHAAcAAAABAAMAAAAHAAcAAAAAAAMAAAAHAAcAAAAAAAEAAAAHAAcAAAAAAAIAAAAHAAcAAAABAAEAAAALAAYAAAACAAEAAAALAAYAAAABAAIAAAALAAYAAAACAAIAAAALAAYAAAADAAEAAAALAAYAAAADAAIAAAALAAYAAAADAAMAAAALAAYAAAADAAQAAAALAAYAAAAEAAQAAAALAAYAAAAFAAQAAAALAAYAAAAFAAMAAAALAAYAAAAFAAIAAAALAAYAAAAFAAEAAAALAAYAAAAEAAEAAAALAAYAAAAEAAIAAAALAAYAAAAEAAMAAAALAAYAAAAGAAEAAAALAAYAAAAGAAIAAAALAAYAAAAHAAIAAAALAAYAAAAHAAEAAAALAAYAAAA=")
+tile_set = SubResource("TileSet_qctir")
+
+[node name="Goals" type="TileMapLayer" parent="Levels/03" unique_id=664010233]
+tile_map_data = PackedByteArray("AAAHAAEAAAAMAAMAAAAHAAIAAAAMAAMAAAABAAEAAAAMAAMAAAABAAIAAAAMAAMAAAA=")
+tile_set = SubResource("TileSet_p8hsn")
+
+[node name="Boxes" type="Node2D" parent="Levels/03" unique_id=2056541251]
+
+[node name="Sprite2D4" parent="Levels/03/Boxes" unique_id=1131321711 instance=ExtResource("4_smepj")]
+position = Vector2(640, 352)
+coord = Vector2i(5, 2)
+
+[node name="Sprite2D2" parent="Levels/03/Boxes" unique_id=37928272 instance=ExtResource("4_smepj")]
+position = Vector2(512, 224)
+coord = Vector2i(4, 1)
+
+[node name="Sprite2D" parent="Levels/03/Boxes" unique_id=2009827730 instance=ExtResource("4_smepj")]
+position = Vector2(512, 480)
+coord = Vector2i(4, 3)
+
+[node name="Sprite2D3" parent="Levels/03/Boxes" unique_id=414994956 instance=ExtResource("4_smepj")]
+position = Vector2(384, 352)
+coord = Vector2i(3, 2)
+
+[node name="Player" parent="." unique_id=423179848 instance=ExtResource("1_n4psk")]
+position = Vector2(256, 256)
+frame_progress = 0.8451638
+centered = false
+coord = Vector2i(2, 2)
+direction = Vector2i(0, 1)
+is_moving = false
+
+[node name="Label_HowToRestart" type="Label" parent="." unique_id=467902055]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 600.0
+offset_top = 780.0
+offset_right = 1102.0
+offset_bottom = 830.0
+grow_horizontal = 2
+text = "Press Spacebar to restart"
+label_settings = SubResource("LabelSettings_cbffv")
+horizontal_alignment = 2
+
+[node name="Label_Sokoban" type="Label" parent="." unique_id=181152027]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 50.0
+offset_top = 780.0
+offset_right = 300.0
+offset_bottom = 830.0
+grow_horizontal = 2
+text = "Level 01"
+label_settings = SubResource("LabelSettings_qctir")
+
+[node name="SceneTransitionRect" parent="." unique_id=139522105 instance=ExtResource("6_cbffv")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1152.0
+offset_bottom = 864.0
+grow_horizontal = 1
+grow_vertical = 1

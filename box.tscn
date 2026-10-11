@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cftwbhv6jeqbr"]
+
+[ext_resource type="Texture2D" uid="uid://c27ffkffmoir7" path="res://sokoban_tilesheet@2.png" id="1_oq5cr"]
+[ext_resource type="Script" uid="uid://bq7ecxescmuol" path="res://box.gd" id="2_bqn3j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qctir"]
+atlas = ExtResource("1_oq5cr")
+region = Rect2(1024, 256, 128, 128)
+
+[node name="Sprite2D" type="Sprite2D" unique_id=1889404437]
+texture = SubResource("AtlasTexture_qctir")
+centered = false
+script = ExtResource("2_bqn3j")
